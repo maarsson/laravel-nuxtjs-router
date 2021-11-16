@@ -1,0 +1,22 @@
+{
+    "name": "maarsson/laravel-nuxtjs-router",
+    "description": "Laravel route service provider for NuxtJS frontend",
+    "type": "package",
+    "keywords": ["nuxtjs", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "VMaarsson",
+            "email": "viktor@maarsson.se"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maarsson\\NuxtJsRouter\\": "src"
+        }
+    }
+}
