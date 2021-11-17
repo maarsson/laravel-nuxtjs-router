@@ -16,9 +16,12 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerRoutes();
         $this->registerRouteMiddlewareGroup();
         $this->registerPublishing();
+
+        app()->booted(function() {
+            $this->registerRoutes();
+        });
     }
 
     /**
