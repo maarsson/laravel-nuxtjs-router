@@ -23,6 +23,19 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->configure();
+    }
+
+    /**
+     * Setup the configuration.
+     *
+     * @return void
+     */
+    protected function configure()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/nuxtjs.php',
+            'nuxtjs'
+        );
     }
 }
