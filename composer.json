@@ -18,5 +18,12 @@
         "psr-4": {
             "Maarsson\\NuxtJsRouter\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maarsson\\NuxtJsRouter\\NuxtJsRouterServiceProvider"
+            ]
+        }
     }
 }
