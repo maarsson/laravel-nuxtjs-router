@@ -13,7 +13,7 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->registerPublishing();
     }
 
     /**
@@ -37,5 +37,19 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
             __DIR__ . '/../config/nuxtjs.php',
             'nuxtjs'
         );
+    }
+
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
+    protected function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/nuxtjs.php' => $this->app->configPath('nuxtjs.php'),
+            ], 'nuxtjs-config');
+        }
     }
 }
