@@ -2,6 +2,8 @@
 
 namespace Maarsson\NuxtJsRouter;
 
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,6 +17,7 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
+        $this->registerRouteMiddlewareGroup();
         $this->registerPublishing();
     }
 
@@ -54,6 +57,18 @@ class NuxtJsRouterServiceProvider extends ServiceProvider
         ], function () {
             $this->loadRoutesFrom(__DIR__ . '/../routes/nuxtjs.php');
         });
+    }
+
+    /**
+     * Register the 'nuxt' route middleware.
+     *
+     * @return void
+     */
+    protected function registerRouteMiddlewareGroup()
+    {
+        $this->app
+            ->make(Router::class)
+            ->pushMiddlewareToGroup('nuxt', SubstituteBindings::class);
     }
 
     /**
