@@ -17,6 +17,7 @@ class RouteController extends Controller
         $nuxtRequestPath = $nuxtPublicFolderPath . request()->getRequestUri();
         $nuxtIndexPath = $nuxtPublicFolderPath . '/index.html';
         $filePath = file_exists($nuxtRequestPath) && ! is_dir($nuxtRequestPath) ? $nuxtRequestPath : $nuxtIndexPath;
+        $responseHeader = str_ends_with($nuxtRequestPath, '.js') ? ['Content-Type' => 'application/javascript'] : [];
 
         if (
             $nuxtPublicFolderPath === false
@@ -38,6 +39,7 @@ class RouteController extends Controller
         return response(
             file_get_contents($filePath),
             200,
+            $responseHeader
         );
     }
 }
