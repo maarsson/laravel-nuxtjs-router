@@ -21,18 +21,15 @@ class RouteController extends Controller
 
         if (
             $nuxtPublicFolderPath === false
-            || ! is_dir($nuxtPublicFolderPath))
-        {
+            || ! is_dir($nuxtPublicFolderPath)) {
             abort(412, 'The NuxtJS public path does not exists! (Frontend was not compiled yet?)');
         }
 
-        if (! file_exists($nuxtIndexPath))
-        {
+        if (! file_exists($nuxtIndexPath)) {
             abort(422, 'The NuxtJS index file does not exists!');
         }
 
-        if (! file_exists($filePath))
-        {
+        if (! file_exists($filePath)) {
             abort(422, 'The requested file does not exists!');
         }
 
